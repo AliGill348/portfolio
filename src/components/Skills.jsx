@@ -1,0 +1,4 @@
+const skills = [['Backend', 'PHP 8.x · Laravel · OOP · SOLID · Authentication · PHPUnit'], ['Data', 'MySQL · Eloquent ORM · Schema design · Indexing · Transactions'], ['Integrations', 'REST APIs · Webhooks · Payments · KYC · Crypto · Postman'], ['Frontend', 'Blade · HTML & CSS · JavaScript · jQuery · AJAX · React'], ['Delivery', 'Git & GitHub · Linux · CI/CD · Code review · Agile delivery']]
+export default function Skills() {
+  return <section className="section skills" id="skills"><div className="section-heading light"><span className="section-number">04</span><p>Capabilities</p></div><div className="skills-grid"><h2>Tools change.<br /><em>Fundamentals stay.</em></h2><div className="skill-list">{skills.map(([title, items]) => <div className="skill-row" key={title}><strong>{title}</strong><span>{items}</span></div>)}</div></div></section>
+}

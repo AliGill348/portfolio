@@ -1,0 +1,39 @@
+name: CI
+
+# Runs automatically every time you push code, or open a pull request,
+# against the main branch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Get the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js (same version as our Dockerfile uses)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build the React app — if this step fails, the workflow fails,
+      #    so broken code never silently gets merged.
+      - name: Build React app
+        run: npm run build
+
+      # 5. Build the Docker image as a final check that the Dockerfile
+      #    itself still works end-to-end.
+      - name: Build Docker image
+        run: docker build -t ali-portfolio:ci .

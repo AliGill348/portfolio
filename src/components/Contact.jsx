@@ -1,0 +1,3 @@
+export default function Contact() {
+  return <section className="section contact" id="contact"><div className="section-heading"><span className="section-number">05</span><p>Contact</p></div><p className="contact-kicker">Have an idea worth building?</p><h2>Let’s make it<br /><em>real.</em></h2><a className="contact-email" href="mailto:juttputer802@gmail.com">juttputer802@gmail.com <span>↗</span></a><div className="contact-links"><a href="https://www.linkedin.com/in/ali-hamza-897b16305" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/AliGill348" target="_blank" rel="noreferrer">GitHub ↗</a><a href="tel:+923480227661">+92 348 0227661</a></div></section>
+}
