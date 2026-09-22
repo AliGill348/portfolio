@@ -1,9 +1,17 @@
+import { useInView } from '../hooks/useInView.js'
+
 const jobs = [
   { role: 'Backend Team Lead & API Coordinator', company: 'Paysavo', date: 'Nov 2024 — Present', current: true, summary: 'Leading backend delivery for a global fintech platform spanning wallets, transfers, bill payments, KYC, and crypto.', wins: ['Coordinate 8+ payment, KYC, and crypto integrations', 'Build reusable transaction and wallet modules', 'Improve MySQL performance and production reliability'] },
   { role: 'Software Engineer · Junior to Senior', company: 'Cyber Gen', date: 'Jun 2023 — Nov 2024', summary: 'Built Laravel features for CRM, service management, reporting, and internal business platforms.', wins: ['Owned the Service Management module end to end', 'Shipped responsive, role-based operational workflows', 'Promoted from Junior to Senior in under a year'] },
   { role: 'Software Engineer · Intern & Junior', company: 'Einnovention', date: 'Feb 2023 — Jul 2023', summary: 'Delivered API-backed communication features and Laravel modules for multi-role business portals.', wins: ['Implemented real-time chat features', 'Translated redesigned interfaces into working modules', 'Supported migrations, integrations, and releases'] },
   { role: 'Freelance PHP/Laravel Developer', company: 'Self-employed / Academic', date: 'Aug 2022 — Jan 2023', summary: 'Built client websites and a final-year software project while completing a Bachelor of Software Engineering.', wins: ['Delivered CRUD systems, admin panels, and booking forms', 'Applied Laravel authentication and database design', 'Built a foundation in responsive, production-minded delivery'] },
 ]
+
+function Job({ job, index }) {
+  const [ref, isInView] = useInView({ threshold: 0.18, rootMargin: '0px 0px -35px' })
+  return <article ref={ref} className={`job ${isInView ? 'is-visible' : ''}`} style={{ '--job-index': index }}><div className="job-meta"><span>{job.date}</span>{job.current ? <i>● Current</i> : null}</div><div><p className="job-company">{job.company}</p><h3>{job.role}</h3><p className="job-summary">{job.summary}</p></div><ul>{job.wins.map((win) => <li key={win}>{win}</li>)}</ul></article>
+}
+
 export default function Experience() {
-  return <section className="section experience" id="experience"><div className="section-heading light"><span className="section-number">02</span><p>Experience</p></div><div className="experience-intro"><h2>Experience that<br /><em>compounds.</em></h2><p>From agency delivery to leading backend work on a live financial platform.</p></div><div className="timeline">{jobs.map((job) => <article className="job" key={job.company}><div className="job-meta"><span>{job.date}</span>{job.current ? <i>Current</i> : null}</div><div><p className="job-company">{job.company}</p><h3>{job.role}</h3><p className="job-summary">{job.summary}</p></div><ul>{job.wins.map((win) => <li key={win}>{win}</li>)}</ul></article>)}</div></section>
+  return <section className="section experience" id="experience"><div className="section-heading light"><span className="section-number">02</span><p>Career ledger</p></div><div className="experience-intro"><h2>Experience that<br /><em>compounds.</em></h2><p>4+ years spanning agency delivery, backend engineering, and technical leadership on live financial systems.</p></div><div className="timeline">{jobs.map((job, index) => <Job job={job} index={index} key={`${job.company}-${job.date}`} />)}</div></section>
 }

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 export default function ScrollEffects() {
   useEffect(() => {
-    const items = document.querySelectorAll('.section-heading, .about-grid, .experience-intro, .job, .projects-head, .project-card, .skills-grid, .contact-kicker, .contact h2, .contact-email, .contact-links')
+    const items = document.querySelectorAll('.section-heading, .about-grid, .feature-card, .experience-intro, .projects-head, .project-group-label, .project-card, .skills-intro, .skill-card, .contact-kicker, .contact h2, .contact-email, .contact-links')
     items.forEach((item) => item.classList.add('reveal'))
 
     const observer = new IntersectionObserver((entries) => {
